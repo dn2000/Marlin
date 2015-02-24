@@ -54,3 +54,7 @@
 #if defined(DIGIPOT_I2C)
   #include <Wire.h>
 #endif
+
+#ifdef NEOPIXEL
+  #include <Adafruit_NeoPixel.h>
+#endif

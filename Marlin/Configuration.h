@@ -847,6 +847,13 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //#define FILAMENT_LCD_DISPLAY
 
 
+#define NEOPIXEL
+// http://i.imgur.com/l54GcCU.jpg
+#define NEOPIXEL_1_SIZE 12
+#define NEOPIXEL_1_PIN 42
+#define NEOPIXEL_2_SIZE 12
+#define NEOPIXEL_2_PIN 44
+  
 
 
 

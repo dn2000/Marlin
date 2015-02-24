@@ -53,6 +53,12 @@
   #include "Wire.h"
 #endif
 
+#ifdef NEOPIXEL
+  #include <Adafruit_NeoPixel.h>
+  Adafruit_NeoPixel neopixel1 = Adafruit_NeoPixel(NEOPIXEL_1_SIZE, NEOPIXEL_1_PIN, NEO_GRB + NEO_KHZ800);
+  Adafruit_NeoPixel neopixel2 = Adafruit_NeoPixel(NEOPIXEL_2_SIZE, NEOPIXEL_2_PIN, NEO_GRB + NEO_KHZ800);
+#endif
+
 #if NUM_SERVOS > 0
   #include "Servo.h"
 #endif
@@ -668,6 +674,11 @@ void setup()
   pinMode(STAT_LED_BLUE, OUTPUT);
   digitalWrite(STAT_LED_BLUE, LOW); // turn it off
 #endif  
+
+#ifdef NEOPIXEL
+  neopixel1.begin();
+  neopixel2.begin();
+#endif
 }
 
 
@@ -3879,6 +3890,36 @@ case 404:  //M404 Enter the nominal filament width (3mm, 1.75mm ) N<3.0> or disp
       #endif
     }
     break;
+#ifdef NEOPIXEL    
+    case 420:
+    {
+      uint8_t lr=0;
+      uint8_t lg=0;
+      uint8_t lb=0;
+      if (code_seen('R')) {lr=code_value_long(); }
+      if (code_seen('E')) {lg=code_value_long(); }
+      if (code_seen('B')) {lb=code_value_long(); }
+      for (int i = 0; i < neopixel1.numPixels(); i++) {
+        neopixel1.setPixelColor(i, lr, lg, lb);
+      }
+      neopixel1.show();
+    }
+    break;    
+    case 421:
+    {
+      uint8_t lr=0;
+      uint8_t lg=0;
+      uint8_t lb=0;
+      if (code_seen('R')) {lr=code_value_long(); }
+      if (code_seen('E')) {lg=code_value_long(); }
+      if (code_seen('B')) {lb=code_value_long(); }
+      for (int i = 0; i < neopixel2.numPixels(); i++) {
+        neopixel2.setPixelColor(i, lr, lg, lb);
+      }
+      neopixel2.show();
+    }
+    break;    
+#endif    
     case 999: // M999: Restart after being stopped
       Stopped = false;
       lcd_reset_alert_level();
