@@ -363,7 +363,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define Y_MAX_POS 205
 #define Y_MIN_POS 0
 #define Z_MAX_POS 200
-#define Z_MIN_POS 0
+#define Z_MIN_POS -15.00
 
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
 #define Y_MAX_LENGTH (Y_MAX_POS - Y_MIN_POS)
@@ -511,7 +511,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // z is non-linear, need to work on that
 // e (c) 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {53.33,53.33,8.88,8.88}  // default steps per unit for Ultimaker
-#define DEFAULT_MAX_FEEDRATE          {300, 200, 360, 360}    // (mm/sec)
+#define DEFAULT_MAX_FEEDRATE          {300, 200, 180, 360}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {1500,500,8000,8000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          20000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
